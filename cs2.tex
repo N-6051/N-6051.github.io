@@ -1,0 +1,1587 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{courier}
+\usepackage{verbatim}
+\usepackage{titlesec}
+\usepackage{fvextra}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+
+\setlength{\parindent}{0pt}
+\setstretch{1.1}
+
+\titleformat{\section}{\large\bfseries}{}{0pt}{}
+
+\lstdefinestyle{pythonstyle}{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{green!50!black},
+    stringstyle=\color{red!60!black},
+    numbers=left,
+    numberstyle=\tiny,
+    breaklines=true,
+    %breakanywhere=true,
+    showstringspaces=false,
+    frame=single
+}
+
+\begin{document}
+
+
+\begin{titlepage}
+\centering
+
+\vspace*{1cm}
+
+{\Large \textbf{CENTRAL BOARD OF SECONDARY EDUCATION}}\\[0.5cm]
+{\large \textbf{ACADEMIC SESSION 2025–2026}}\\[1.5cm]
+
+{\Huge \textbf{COMPUTER SCIENCE}}\\[0.3cm]
+{\Large (083)}\\[1.5cm]
+
+{\LARGE \textbf{PRACTICAL FILE}}\\[2cm]
+
+\begin{tabular}{p{6cm} p{8cm}}
+\textbf{Student Name}      & : \underline{\hspace{7cm}} \\[0.6cm]
+\textbf{Class / Section}   & : XII \underline{\hspace{5.5cm}} \\[0.6cm]
+\textbf{Roll Number}       & : \underline{\hspace{7cm}} \\[0.6cm]
+\textbf{Student ID}        & : \underline{\hspace{7cm}} \\[0.6cm]
+\textbf{School Name}       & : \underline{\hspace{7cm}} \\[0.6cm]
+\textbf{Subject Teacher}   & : \underline{\hspace{7cm}} \\
+\end{tabular}
+
+\vfill
+
+%\begin{center}
+%\textbf{}
+%\end{center}
+
+\vspace{1cm}
+
+\end{titlepage}
+
+
+\newpage
+\vspace{1em}
+
+\section*{Date : \hfill Experiment No: 1}
+
+\textbf{Program 1: Input any number from user and calculate factorial of a number}
+
+
+%\begin{verbatim}
+\begin{lstlisting}[style=pythonstyle]
+# Program to calculate factorial of entered number
+num = int(input("Enter any number :"))
+fact = 1
+n = num             # storing num in n for printing
+while num>1:        # loop to iterate from n to 2
+
+ fact = fact * num
+ num-=1
+
+print("Factorial of ", n , " is :",fact)
+
+\end{lstlisting}
+
+\textbf{OUTPUT}
+\begin{verbatim}
+Enter any number :6
+Factorial of  6  is : 720
+\end{verbatim}
+
+
+
+\newpage
+\section*{Date : \hfill Experiment No: 2}
+
+\textbf{Program 1: Input any number from the user and check if it is Prime no. or not}
+
+%\begin{verbatim}
+\begin{lstlisting}[style=pythonstyle]
+# Program to input any number from user
+# Check it is Prime number or not
+
+import math
+
+num = int(input("Enter any number :"))
+isPrime = True
+
+for i in range(2, int(math.sqrt(num)) + 1):
+    if num % i == 0:
+        isPrime = False
+
+if isPrime:
+    print("## Number is Prime ##")
+else:
+    print("## Number is not Prime ##")
+\end{lstlisting}
+
+\textbf{OUTPUT}
+\begin{verbatim}
+Enter any number :117
+## Number is not Prime ##
+
+>>>
+Enter any number :119
+
+## Number is not Prime ##
+>>>
+Enter any number :113
+## Number is Prime ##
+>>>
+Enter any number :7
+
+## Number is Prime ##
+>>>
+Enter any number :19
+
+## Number is Prime ##
+\end{verbatim}
+
+
+
+\newpage
+\section*{Date : \hfill Experiment No: 3}
+
+\textbf{Program : Write a program to find sum of elements of List recursively}
+
+\begin{lstlisting}[style=pythonstyle]
+# Program to find sum of elements of list recursively
+def findSum(lst, num):
+    if num == 0:
+        return 0
+    else:
+        return lst[num-1] + findSum(lst, num-1)
+
+mylist = []            # Empty List
+
+# Loop to input in list
+num = int(input("Enter how many number :"))
+for i in range(num):
+    n = int(input("Enter Element " + str(i+1) + ":"))
+    mylist.append(n)   # Adding number to list
+
+sum = findSum(mylist, len(mylist))
+print("Sum of List items ", mylist, " is :", sum)
+\end{lstlisting}
+
+\textbf{OUTPUT}
+\begin{verbatim}
+Enter how many number :6
+Enter Element 1:10
+Enter Element 2:20
+Enter Element 3:30
+Enter Element 4:40
+
+Enter Element 5:50
+Enter Element 6:60
+Sum of List items  [10, 20, 30, 40, 50, 60]  is : 210
+\end{verbatim}
+
+
+
+\newpage
+\section*{Date : \hfill Experiment No: 4}
+
+\textbf{Program 1: Write a program to calculate the nth term of Fibonacci series}
+
+%\begin{verbatim}
+\begin{lstlisting}[style=pythonstyle]
+#Program to find 'n'th term of fibonacci series
+#Fibonacci series : 0,1,1,2,3,5,8,13,21,34,55,89,...
+#nth term will be counted from 1 not 0
+
+def nthfiboterm(n):
+if n<=1:
+
+return n
+else:
+
+return (nthfiboterm(n-1)+nthfiboterm(n-2))
+
+num = int(input("Enter the 'n' term to find in fibonacci :"))
+term =nthfiboterm(num)
+print(num,"th term of fibonacci series is :",term)
+\end{lstlisting}
+
+\textbf{OUTPUT}
+\begin{verbatim}
+Enter the 'n' term to find in fibonacci :10
+10 th term of fibonacci series is : 55
+\end{verbatim}
+
+
+
+\newpage
+\section*{Date : \hfill Experiment No: 5}
+
+\textbf{Program : Program to search any word in given string/sentence}
+
+%\begin{verbatim}
+\begin{lstlisting}[style=pythonstyle]
+# Program to find the occurence of any word in a string
+def countWord(str1, word):
+    s = str1.split()
+    count = 0
+    for w in s:
+        if w == word:
+            count += 1
+    return count
+
+str1 = input("Enter any sentence :")
+word = input("Enter word to search in sentence :")
+count = countWord(str1, word)
+
+if count == 0:
+    print("## Sorry! ", word, " not present ")
+else:
+    print("## ", word, " occurs ", count, " times ## ")
+\end{lstlisting}
+
+\textbf{OUTPUT}
+\begin{verbatim}
+Enter any sentence :my computer your computer our computer everyones computer
+
+Enter word to search in sentence :computer
+##  computer  occurs  4  times ##
+
+Enter any sentence :learning python is fun
+Enter word to search in sentence :java
+## Sorry!  java  not present
+\end{verbatim}
+
+
+
+% --------------------------------------------------
+
+\newpage
+\section*{Date : \hfill Experiment No: 6}
+
+\textbf{Program 1: Program to read and display file content line by line with each
+word separated by ‘\#’}
+
+%\begin{verbatim}
+\begin{lstlisting}[style=pythonstyle]
+# Program to read and display file content line by line
+# with each word separated by space
+
+fname = input("Enter file name :")
+f = open(fname, 'r')
+
+print("File Content :")
+for line in f:
+    words = line.split()
+    for w in words:
+        print(w, end=' ')
+    print()
+
+f.close()
+\end{lstlisting}
+
+NOTE : if the original content of file is:
+\begin{verbatim}
+India is my country
+I love python
+Python learning is fun
+\end{verbatim}
+
+\textbf{OUTPUT}
+\begin{verbatim}
+India#is#my#country#
+I#love#python#
+Python#learning#is#fun#
+\end{verbatim}
+
+
+
+% --------------------------------------------------
+
+\newpage
+\section*{Date : \hfill Experiment No: 7}
+
+\textbf{Program 1: Program to read the content of file and display the total number
+of consonants, uppercase, vowels and lower case characters}
+
+%\begin{verbatim}
+\begin{lstlisting}[style=pythonstyle]
+# Program to read the content of file and display total number
+# of consonants, uppercase, vowels and lower case characters
+
+fname = input("Enter file name :")
+f = open(fname, 'r')
+
+vowels = consonants = upper = lower = 0
+
+for line in f:
+    for ch in line:
+        if ch.isalpha():
+            if ch.lower() in 'aeiou':
+                vowels += 1
+            else:
+                consonants += 1
+        if ch.isupper():
+            upper += 1
+        elif ch.islower():
+            lower += 1
+
+f.close()
+
+print("Total Vowels :", vowels)
+print("Total Consonants :", consonants)
+print("Total Uppercase Characters :", upper)
+print("Total Lowercase Characters :", lower)
+\end{lstlisting}
+NOTE : if the original content of file is:
+\begin{verbatim}
+India is my country
+I love python
+Python learning is fun
+123@
+\end{verbatim}
+\textbf{OUTPUT}
+\begin{verbatim}
+Total Vowels in file            : 16
+Total Consonants in file        : 30
+Total Capital letters in file   : 2
+Total Small letters in file     : 44
+Total Other than letters        : 4
+\end{verbatim}
+
+
+
+\newpage
+\section*{Date : \hfill Experiment No: 8}
+
+\textbf{Program 1: Program to create binary file to store Rollno and Name, Search
+any Rollno and display name if Rollno found otherwise “Rollno not found”}
+
+%\begin{verbatim}
+\begin{lstlisting}[style=pythonstyle]
+#Program to create a binary file to store Rollno and name
+#Search for Rollno and display record if found
+#otherwise "Roll no. not found"
+
+import pickle
+student = []
+f = open('student.dat', 'wb')
+ans = 'y'
+
+while ans.lower() == 'y':
+    roll = int(input("Enter Roll Number :"))
+    name = input("Enter Name :")
+    student.append([roll, name])
+    ans = input("Add More ?(Y)")
+
+pickle.dump(student, f)
+f.close()
+
+f = open('student.dat', 'rb')
+student = []
+
+while True:
+    try:
+        student = pickle.load(f)
+    except EOFError:
+        break
+
+ans = 'y'
+while ans.lower() == 'y':
+    found = False
+    r = int(input("Enter Roll number to search :"))
+    for s in student:
+        if s[0] == r:
+            print("## Name is :", s[1], " ##")
+            found = True
+            break
+    if not found:
+        print("####Sorry! Roll number not found ####")
+
+    ans = input("Search more ?(Y) :")
+
+f.close()
+\end{lstlisting}
+\newpage
+\textbf{OUTPUT}
+\begin{verbatim}
+Enter Roll Number :1
+Enter Name :Amit
+Add More ?(Y)y
+
+Enter Roll Number :2
+Enter Name :Jasbir
+Add More ?(Y)y
+
+Enter Roll Number :3
+Enter Name :Vikral
+Add More ?(Y)n
+
+Enter Roll number to search :2
+## Name is : Jasbir  ##
+Search more ?(Y) :y
+
+Enter Roll number to search :1
+## Name is : Amit  ##
+Search more ?(Y) :y
+
+Enter Roll number to search :4
+####Sorry! Roll number not found ####
+Search more ?(Y) :n
+\end{verbatim}
+
+
+
+% --------------------------------------------------
+
+\newpage
+\section*{Date : \hfill Experiment No: 9}
+
+\textbf{Program 1: Program to create binary file to store Rollno,Name and Marks
+and update marks of entered Rollno}
+
+%\begin{verbatim}
+\begin{lstlisting}[style=pythonstyle]
+# Program to create a binary file to store Rollno, Name and Marks
+# and update marks of entered Rollno
+
+import pickle
+
+student = []
+f = open('student.dat', 'wb')
+
+ans = 'y'
+while ans.lower() == 'y':
+    roll = int(input("Enter Roll Number :"))
+    name = input("Enter Name :")
+    marks = int(input("Enter Marks :"))
+    student.append([roll, name, marks])
+    ans = input("Add More ?(Y)")
+
+pickle.dump(student, f)
+f.close()
+
+# Reading data from binary file
+f = open('student.dat', 'rb')
+student = []
+
+while True:
+    try:
+        student = pickle.load(f)
+    except EOFError:
+        break
+f.close()
+
+# Updating record
+ans = 'y'
+while ans.lower() == 'y':
+    found = False
+    r = int(input("Enter Roll number to update :"))
+    for s in student:
+        if s[0] == r:
+            print("## Name is :", s[1], " ##")
+            print("## Current Marks is :", s[2], " ##")
+            m = int(input("Enter new marks :"))
+            s[2] = m
+            print("## Record Updated ##")
+            found = True
+            break
+
+    if not found:
+        print("####Sorry! Roll number not found ####")
+
+    ans = input("Update more ?(Y) :")
+
+# Writing updated data back to file
+f = open('student.dat', 'wb')
+pickle.dump(student, f)
+f.close()
+\end{lstlisting}
+
+\textbf{OUTPUT}
+\begin{verbatim}
+Enter Roll Number :1
+Enter Name :Amit
+Enter Marks :99
+Add More ?(Y)y
+
+Enter Roll Number :2
+Enter Name :Vikrant
+Enter Marks :88
+Add More ?(Y)y
+
+Enter Roll Number :3
+Enter Name :Nitin
+Enter Marks :66
+Add More ?(Y)n
+
+Enter Roll number to update :2
+## Name is : Vikrant  ##
+## Current Marks is : 88  ##
+Enter new marks :90
+## Record Updated ##
+Update more ?(Y) :y
+
+Enter Roll number to update :2
+## Name is : Vikrant  ##
+## Current Marks is : 90  ##
+Enter new marks :95
+## Record Updated ##
+Update more ?(Y) :n
+\end{verbatim}
+
+
+
+% --------------------------------------------------
+
+\newpage
+\section*{Date : \hfill Experiment No: 10}
+
+\textbf{Program 1: Program to read the content of file line by line and write it to
+another file except for the lines contains ‘a’ letter in it.}
+
+%\begin{verbatim}
+\begin{lstlisting}[style=pythonstyle]
+#Program to read line from file and write it to another line
+#Except for those line which contains letter 'a'
+
+f1 = open("file2.txt")
+f2 = open("file2copy.txt","w")
+
+for line in f1:
+    if 'a' not in line:
+        f2.write(line)
+print("## File Copied Successfully! ##")
+
+f1.close()
+f2.close()
+\end{lstlisting}
+
+NOTE: Content of file2.txt
+\begin{verbatim}
+a quick brown fox
+one two three four
+five six seven
+India is my country
+eight nine ten
+bye!
+\end{verbatim}
+
+\textbf{OUTPUT}
+\begin{verbatim}
+## File Copied Successfully! ##
+\end{verbatim}
+
+NOTE: After copy content of file2copy.txt
+\begin{verbatim}
+one two three four
+five six seven
+eight nine ten
+bye!
+\end{verbatim}
+
+
+
+% --------------------------------------------------
+
+\newpage
+\section*{Date : \hfill Experiment No: 11}
+
+\textbf{Program 1: Program to create CSV file and store empno,name,salary and
+search any empno and display name,salary and if not found appropriate
+message.}
+
+
+%\begin{verbatim}
+\begin{lstlisting}[style=pythonstyle]
+import csv
+
+# Writing data into CSV file
+with open('myfile.csv', mode='a', newline='') as csvfile:
+    mywriter = csv.writer(csvfile, delimiter=',')
+    ans = 'y'
+    while ans.lower() == 'y':
+        eno = int(input("Enter Employee Number "))
+        name = input("Enter Employee Name ")
+        salary = int(input("Enter Employee Salary :"))
+        mywriter.writerow([eno, name, salary])
+        print("## Data Saved... ##")
+        ans = input("Add More ?")
+
+# Searching record from CSV file
+ans = 'y'
+with open('myfile.csv', mode='r') as csvfile:
+    myreader = csv.reader(csvfile, delimiter=',')
+    while ans.lower() == 'y':
+        found = False
+        e = int(input("Enter Employee Number to search :"))
+        csvfile.seek(0)
+        for row in myreader:
+            if len(row) != 0:
+                if int(row[0]) == e:
+                    print("============================")
+                    print("NAME   :", row[1])
+                    print("SALARY :", row[2])
+                    found = True
+                    break
+        if not found:
+            print("==========================")
+            print("      EMPNO NOT FOUND")
+            print("==========================")
+        ans = input("Search More ? (Y)")
+\end{lstlisting}
+
+
+\textbf{OUTPUT}
+\begin{verbatim}
+Enter Employee Number 1
+Enter Employee Name Amit
+Enter Employee Salary :90000
+## Data Saved... ##
+Add More ?y
+
+Enter Employee Number 2
+Enter Employee Name Sunil
+Enter Employee Salary :80000
+## Data Saved... ##
+Add More ?y
+
+Enter Employee Number 3
+Enter Employee Name Satya
+Enter Employee Salary :75000
+## Data Saved... ##
+Add More ?n
+
+Enter Employee Number to search :2
+============================
+NAME   : Sunil
+SALARY : 80000
+Search More ? (Y)y
+
+Enter Employee Number to search :3
+============================
+NAME   : Satya
+SALARY : 75000
+Search More ? (Y)y
+
+Enter Employee Number to search :4
+==========================
+      EMPNO NOT FOUND
+==========================
+Search More ? (Y)n
+\end{verbatim}
+
+
+
+% --------------------------------------------------
+
+\newpage
+\section*{Date : \hfill Experiment No: 12}
+
+\textbf{Program 1: Program to generate random number 1-6, simulating a dice}
+
+%\begin{verbatim}
+\begin{lstlisting}[style=pythonstyle]
+# Program to generate random number between 1 - 6
+# To simulate the dice
+import random
+import time
+print("Press CTRL+C to stop the dice ")
+
+play='y'
+while play=='y':
+    try:
+        while True:
+            for i in range(10):
+                print()
+            n = random.randint(1,6)
+            print(n,end='')
+            time.sleep(.00001)
+            
+    except KeyboardInterrupt:
+        print("Your Number is :",n)
+        ans=input("Play More? (Y) :")
+        
+        if ans.lower()!='y':
+            play='n'
+            break
+\end{lstlisting}
+
+\textbf{OUTPUT}
+\begin{verbatim}
+4Your Number is : 4
+Play More? (Y) :y
+Your Number is : 3
+Play More? (Y) :y
+Your Number is : 2
+Play More? (Y) :n
+\end{verbatim}
+
+
+
+
+\newpage
+\section*{Date : \hfill Experiment No: 13}
+
+\textbf{Program 1: Program to implement Stack in Python using List}
+
+%\begin{verbatim}
+\begin{lstlisting}[style=pythonstyle]
+def isEmpty(S):
+ if len(S)==0:
+  return True
+ else:
+  return False
+
+def Push(S,item):
+ S.append(item)
+ top=len(S)-1
+
+def Pop(S):
+ if isEmpty(S):
+  return "Underflow"
+ else:
+  val = S.pop()
+  if len(S)==0:
+   top=None
+  else:
+   top=len(S)-1
+  return val
+
+def Peek(S):
+ if isEmpty(S):
+  return "Underflow"
+ else:
+  top=len(S)-1
+  return S[top]
+
+def Show(S):
+ if isEmpty(S):
+  print("Sorry No items in Stack ")
+ else:
+  t = len(S)-1
+  print("(Top)",end=' ')
+  while(t>=0):
+   print(S[t],"<==",end=' ')
+   t-=1
+  print()
+
+# main begins here
+S=[]  # Stack
+top=None
+
+while True:
+print("**** STACK DEMONSTRATION ******")
+print("1. PUSH ")
+print("2. POP")
+print("3. PEEK")
+print("4. SHOW STACK ")
+print("0. EXIT")
+ch = int(input("Enter your choice :"))
+if ch==1:
+ val = int(input("Enter Item to Push :"))
+ Push(S,val)
+
+elif ch==2:
+ val = Pop(S)
+ if val=="Underflow":
+  print("Stack is Empty")
+ else:
+  print("Deleted Item was :",val)
+
+elif ch==3:
+ val = Peek(S)
+ if val=="Underflow":
+  print("Stack Empty")
+ else:
+  print("Top Item :",val)
+
+elif ch==4:
+ Show(S)
+
+elif ch==0:
+ print("Bye")
+ break
+
+\end{lstlisting}
+
+\textbf{OUTPUT}
+\begin{verbatim}
+**** STACK DEMONSTRATION ******
+1. PUSH
+2. POP
+3. PEEK
+4. SHOW STACK
+0. EXIT
+Enter your choice :1
+Enter Item to Push :10
+
+
+**** STACK DEMONSTRATION ******
+1. PUSH
+2. POP
+3. PEEK
+4. SHOW STACK
+0. EXIT
+Enter your choice :1
+Enter Item to Push :20
+
+**** STACK DEMONSTRATION ******
+1. PUSH
+2. POP
+3. PEEK
+4. SHOW STACK
+0. EXIT
+Enter your choice :1
+Enter Item to Push :30
+
+**** STACK DEMONSTRATION ******
+1. PUSH
+2. POP
+3. PEEK
+4. SHOW STACK
+0. EXIT
+Enter your choice :4
+
+(Top) 30 <== 20 <== 10 <==
+
+**** STACK DEMONSTRATION ******
+1. PUSH
+2. POP
+3. PEEK
+4. SHOW STACK
+0. EXIT
+Enter your choice :3
+Top Item : 30
+
+**** STACK DEMONSTRATION ******
+1. PUSH
+2. POP
+3. PEEK
+4. SHOW STACK
+0. EXIT
+Enter your choice :2
+
+Deleted Item was : 30
+
+
+**** STACK DEMONSTRATION ******
+1. PUSH
+2. POP
+3. PEEK
+4. SHOW STACK
+0. EXIT
+Enter your choice :4
+
+(Top) 20 <== 10 <==
+
+**** STACK DEMONSTRATION ******
+1. PUSH
+2. POP
+3. PEEK
+4. SHOW STACK
+0. EXIT
+Enter your choice :0
+Bye
+\end{verbatim}
+
+
+
+% --------------------------------------------------
+
+\newpage
+\section*{Date : \hfill Experiment No: 14}
+
+\textbf{Program 1: Program to implement Queue in Python using List}
+
+
+%\begin{verbatim}
+\begin{lstlisting}[style=pythonstyle]
+def isEmpty(Q):
+    if len(Q) == 0:
+        return True
+    else:
+        return False
+
+def Enqueue(Q, item):
+    Q.append(item)
+    if len(Q) == 1:
+        front = rear = 0
+    else:
+        rear = len(Q) - 1
+def Dequeue(Q):
+    if isEmpty(Q):
+        return "Underflow"
+    else:
+        val = Q.pop(0)
+        if len(Q) == 0:
+            front = rear = None
+        return val
+def Peek(Q):
+    if isEmpty(Q):
+        return "Underflow"
+    else:
+        front = 0
+        return Q[front]
+
+def Show(Q):
+    if isEmpty(Q):
+        print("Sorry No items in Queue ")
+    else:
+        print("(Front)", end=' ')
+        for item in Q:
+            print(item, "==>", end=' ')
+        print()
+Q = []     # Queue
+front = rear = None
+while True:
+    print("**** QUEUE DEMONSTRATION ******")
+    print("1. ENQUEUE ")
+    print("2. DEQUEUE")
+    print("3. PEEK")
+    print("4. SHOW QUEUE ")
+    print("0. EXIT")
+    ch = int(input("Enter your choice :"))
+
+    if ch == 1:
+        val = int(input("Enter Item to Insert :"))
+        Enqueue(Q, val)
+    elif ch == 2:
+        val = Dequeue(Q)
+        if val == "Underflow":
+            print("Queue is Empty")
+        else:
+            print("\nDeleted Item was :", val)
+    elif ch == 3:
+        val = Peek(Q)
+        if val == "Underflow":
+            print("Queue Empty")
+        else:
+            print("Front Item :", val)
+
+    elif ch == 4:
+        Show(Q)
+
+    elif ch == 0:
+        print("Bye")
+        break
+\end{lstlisting}
+
+
+
+\textbf{OUTPUT}
+\begin{verbatim}
+**** QUEUE DEMONSTRATION ******
+1. ENQUEUE
+2. DEQUEUE
+3. PEEK
+4. SHOW QUEUE
+0. EXIT
+Enter your choice :1
+Enter Item to Insert :10
+
+**** QUEUE DEMONSTRATION ******
+1. ENQUEUE
+2. DEQUEUE
+3. PEEK
+4. SHOW QUEUE
+0. EXIT
+Enter your choice :1
+Enter Item to Insert :30
+
+**** QUEUE DEMONSTRATION ******
+1. ENQUEUE
+2. DEQUEUE
+3. PEEK
+4. SHOW QUEUE
+0. EXIT
+Enter your choice :4
+(Front) 10 ==> 20 ==> 30 ==>
+
+**** QUEUE DEMONSTRATION ******
+1. ENQUEUE
+2. DEQUEUE
+3. PEEK
+4. SHOW QUEUE
+0. EXIT
+Enter your choice :3
+Front Item : 10
+
+**** QUEUE DEMONSTRATION ******
+1. ENQUEUE
+2. DEQUEUE
+3. PEEK
+4. SHOW QUEUE
+0. EXIT
+Enter your choice :2
+Deleted Item was : 10
+
+**** QUEUE DEMONSTRATION ******
+1. ENQUEUE
+2. DEQUEUE
+3. PEEK
+4. SHOW QUEUE
+0. EXIT
+Enter your choice :4
+(Front) 20 ==> 30 ==>
+
+**** QUEUE DEMONSTRATION ******
+1. ENQUEUE
+2. DEQUEUE
+3. PEEK
+4. SHOW QUEUE
+0. EXIT
+Enter your choice :0
+Bye
+\end{verbatim}
+
+
+
+
+
+
+
+\newpage
+\section*{Date : \hfill Experiment No: 15}
+
+\textbf{Program 1: Program to take 10 sample phishing email, and find the most
+common word occurring}
+
+%\begin{verbatim}
+\begin{lstlisting}[style=pythonstyle]
+#Program to take 10 sample phishing mail
+#and count the most commonly occuring word
+phishingemail=[
+    "jackpotwin@lottery.com",
+    "claimtheprize@mymoney.com",
+    "youarethewinner@lottery.com",
+    "luckywinner@mymoney.com",
+    "spinthewheel@flipkart.com",
+    "dealwinner@snapdeal.com",
+    "luckywinner@snapdeal.com",
+    "luckyjackpot@americanlottery.com",
+    "claimtheprize@lootolottery.com",
+    "youarelucky@mymoney.com"
+]
+
+myd={}
+
+for e in phishingemail:
+    x=e.split('@')
+    for w in x:
+        if w not in myd:
+            myd[w]=1
+        else:
+            myd[w]+=1
+
+key_max = max(myd,key=myd.get)
+print("Most Common Occuring word is :",key_max)
+\end{lstlisting}
+
+\textbf{OUTPUT}
+\begin{verbatim}
+Most Common Occuring word is : mymoney.com
+\end{verbatim}
+
+
+
+% --------------------------------------------------
+
+\newpage
+\section*{Date : \hfill Experiment No: 16}
+
+\textbf{Program 1: Program to create 21 Stick Game so that computer always wins}
+
+
+Rule of Game (Total Sticks = 21):
+1) User and Computer both can pick stick one by one
+2) Maximum stick both can pick is 4 i.e. 1 to 4
+3) Anyone with last stick will be the looser
+
+%\begin{verbatim}
+\begin{lstlisting}[style=pythonstyle]
+def PrintStick(n):
+    print("o " * n)
+    print("| " * n)
+    print("| " * n)
+    print("| " * n)
+    print("| " * n)
+TotalStick = 21
+win = False
+humanPlayer = True
+print("=== Welcome To Stick Picking Game :: Computer Vs User ===")
+print("Rule: 1) Both User and Computer can pick sticks between 1 to 4 at a time")
+print("      2) Whosoever picks the last stick will be the looser")
+print("==== Lets Begin ======")
+playerName = input("Enter Your Name :")
+userPick = 0
+PrintStick(TotalStick)
+while win == False:
+    if humanPlayer == True:
+        print("You Can Pick stick between 1 to 4")
+        userPick = 0
+        while userPick <= 0 or userPick > 4:
+            userPick = int(input(playerName + ": Enter Number of Stick to Pick"))
+        TotalStick = TotalStick - userPick
+        humanPlayer = False
+        PrintStick(TotalStick)
+        print("*" * 60)
+        input("Press any key...")
+    else:
+        computerPick = (5 - userPick)
+        print("Computer Picks : ", computerPick, " Sticks ")
+        TotalStick = TotalStick - computerPick
+        PrintStick(TotalStick)
+        if TotalStick == 1:
+            print("## WINNER : COMPUTER ##")
+            win = True
+        print("*" * 60)
+        input("Press any key...")
+        humanPlayer = True
+\end{lstlisting}
+
+
+\textbf{OUTPUT}
+\begin{verbatim}
+=== Welcome To Stick Picking Game :: Computer Vs User ===
+Rule: 1) Both User and Computer can pick sticks between 1 to 4 at a time
+      2) Whosoever picks the last stick will be the looser
+==== Lets Begin ======
+Enter Your Name :RAJ
+o o o o o o o o o o o o o o o o o o o o o
+| | | | | | | | | | | | | | | | | | | | |
+| | | | | | | | | | | | | | | | | | | | |
+| | | | | | | | | | | | | | | | | | | | |
+| | | | | | | | | | | | | | | | | | | | |
+
+You Can Pick stick between 1 to 4
+RAJ: Enter Number of Stick to Pick3
+o o o o o o o o o o o o o o o o o o
+| | | | | | | | | | | | | | | | | |
+| | | | | | | | | | | | | | | | | |
+| | | | | | | | | | | | | | | | | |
+| | | | | | | | | | | | | | | | | |
+************************************************************
+Press any key...
+
+Computer Picks :  2  Sticks
+o o o o o o o o o o o o o o o
+| | | | | | | | | | | | | | |
+| | | | | | | | | | | | | | |
+| | | | | | | | | | | | | | |
+| | | | | | | | | | | | | | |
+************************************************************
+Press any key...
+
+You Can Pick stick between 1 to 4
+RAJ: Enter Number of Stick to Pick4
+o o o o o o o o o o o
+| | | | | | | | | | |
+| | | | | | | | | | |
+| | | | | | | | | | |
+| | | | | | | | | | |
+************************************************************
+Press any key...
+
+Computer Picks :  1  Sticks
+o o o o o o o o o o
+| | | | | | | | | |
+| | | | | | | | | |
+| | | | | | | | | |
+| | | | | | | | | |
+************************************************************
+Press any key...
+You Can Pick stick between 1 to 4
+RAJ: Enter Number of Stick to Pick2
+o o o o o o o o
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+************************************************************
+Press any key...
+
+Computer Picks :  3  Sticks
+o o o o o
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+************************************************************
+Press any key...
+
+You Can Pick stick between 1 to 4
+RAJ: Enter Number of Stick to Pick3
+o o
+| |
+| |
+| |
+| |
+************************************************************
+Press any key...
+
+Computer Picks :  2  Sticks
+o
+| 
+| 
+| 
+| 
+## WINNER : COMPUTER ##
+************************************************************
+Press any key...
+\end{verbatim}
+
+
+
+
+
+
+% --------------------------------------------------
+
+\newpage
+\section*{Date : \hfill Experiment No: 17}
+
+\textbf{Program 1: Program to connect with database and store record of employee
+and display records.}
+
+
+%\begin{verbatim}
+\begin{lstlisting}[style=pythonstyle]
+import mysql.connector as mycon
+# Establish connection
+con = mycon.connect(
+    host='127.0.0.1',
+    user='root',
+    password='admin'
+)
+
+cur = con.cursor()
+# Create database and table
+cur.execute("create database if not exists company")
+cur.execute("use company")
+cur.execute(
+    "create table if not exists employee("
+    "empno int, "
+    "name varchar(20), "
+    "dept varchar(20), "
+    "salary int)"
+)
+con.commit()
+choice = None
+while choice != 0:
+    print("1. ADD RECORD ")
+    print("2. DISPLAY RECORD ")
+    print("0. EXIT")
+    choice = int(input("Enter Choice :"))
+    if choice == 1:
+        e = int(input("Enter Employee Number :"))
+        n = input("Enter Name :")
+        d = input("Enter Department :")
+        s = int(input("Enter Salary :"))
+        query = "insert into employee values({},'{}','{}',{})".format(e, n, d, s)
+        cur.execute(query)
+        con.commit()
+        print("## Data Saved ##")
+    elif choice == 2:
+        query = "select * from employee"
+        cur.execute(query)
+        result = cur.fetchall()
+        print("%10s" % "EMPNO", "%20s" % "NAME",
+              "%15s" % "DEPARTMENT", "%10s" % "SALARY")
+        for row in result:
+            print("%10s" % row[0], "%20s" % row[1],
+                  "%15s" % row[2], "%10s" % row[3])
+
+    elif choice == 0:
+        con.close()
+        print("## Bye!! ##")
+    else:
+        print("## INVALID CHOICE ##")
+\end{lstlisting}
+
+
+\textbf{OUTPUT}
+\begin{verbatim}
+1. ADD RECORD
+2. DISPLAY RECORD
+0. EXIT
+Enter Choice :1
+Enter Employee Number :1
+Enter Name :AMIT
+Enter Department :SALES
+Enter Salary :9000
+## Data Saved ##
+
+1. ADD RECORD
+2. DISPLAY RECORD
+0. EXIT
+Enter Choice :1
+Enter Employee Number :2
+Enter Name :NITIN
+Enter Department :IT
+Enter Salary :80000
+## Data Saved ##
+
+1. ADD RECORD
+2. DISPLAY RECORD
+0. EXIT
+Enter Choice :2
+     EMPNO                 NAME      DEPARTMENT     SALARY
+         1                 AMIT           SALES       9000
+         2                NITIN              IT      80000
+
+1. ADD RECORD
+2. DISPLAY RECORD
+0. EXIT
+Enter Choice :0
+## Bye!! ##
+\end{verbatim}
+
+
+
+
+\newpage
+\section*{Date : \hfill Experiment No: 18}
+
+\textbf{Program 1: Program to connect with database and search employee number
+in table employee and display record, if empno not found display
+appropriate message.}
+
+
+
+%\begin{verbatim}
+\begin{lstlisting}[style=pythonstyle]
+import mysql.connector as mycon
+con = mycon.connect(host='127.0.0.1', user='root', password='admin', database='company')
+cur = con.cursor()
+print("#" * 40)
+print("EMPLOYEE SEARCHING FORM")
+print("#" * 40, end="\n\n")
+ans = 'y'
+while ans.lower() == 'y':
+    eno = int(input("ENTER EMPNO TO SEARCH :"))
+    query = "select * from employee where empno={}".format(eno)
+    cur.execute(query)
+    result = cur.fetchall()
+    if cur.rowcount == 0:
+        print("Sorry! Empno not found ")
+    else:
+        print("%10s" % "EMPNO", "%20s" % "NAME",
+              "%15s" % "DEPARTMENT", "%10s" % "SALARY")
+        for row in result:
+            print("%10s" % row[0], "%20s" % row[1],
+                  "%15s" % row[2], "%10s" % row[3])
+    ans = input("SEARCH MORE (Y) :")
+con.close()
+\end{lstlisting}
+
+
+\textbf{OUTPUT}
+\begin{verbatim}
+########################################
+EMPLOYEE SEARCHING FORM
+########################################
+
+ENTER EMPNO TO SEARCH :1
+     EMPNO                 NAME      DEPARTMENT     SALARY
+         1                 AMIT           SALES       9000
+SEARCH MORE (Y) :y
+ENTER EMPNO TO SEARCH :2
+     EMPNO                 NAME      DEPARTMENT     SALARY
+         2                NITIN              IT      80000
+SEARCH MORE (Y) :y
+ENTER EMPNO TO SEARCH :4
+Sorry! Empno not found
+SEARCH MORE (Y) :n
+\end{verbatim}
+
+
+
+% --------------------------------------------------
+
+\newpage
+\section*{Date : \hfill Experiment No: 19}
+
+\textbf{Program 1: Program to connect with database and update the employee
+record of entered empno.}
+
+%\begin{verbatim}
+\begin{lstlisting}[style=pythonstyle]
+import mysql.connector as mycon
+con = mycon.connect(host='127.0.0.1',user='root',password="admin",
+database="company")
+cur = con.cursor()
+print("#"*40)
+print("EMPLOYEE UPDATION FORM")
+print("#"*40)
+print("\n\n")
+ans='y'
+while ans.lower()=='y':
+ eno = int(input("ENTER EMPNO TO UPDATE :"))
+ query="select * from employee where empno={}".format(eno)
+ cur.execute(query)
+ result = cur.fetchall()
+ if cur.rowcount==0:
+  print("Sorry! Empno not found ")
+ else: print("%10s"%"EMPNO","%20s"%"NAME", "%15s"%"DEPARTMENT",
+"%10s"%"SALARY")
+  for row in result: print("%10s"%row[0],"%20s"%row[1],"%15s"%row[2],"%10s"%row[3])
+  choice=input("\n## ARE YOUR SURE TO UPDATE ? (Y) :")
+  if choice.lower()=='y':
+   print("== YOU CAN UPDATE ONLY DEPT AND SALARY ==")
+   print("== FOR EMPNO AND NAME CONTACT ADMIN ==")
+   d = input("ENTER NEW DEPARTMENT,(LEAVE BLANK IF NOT WANT TO CHANGE )")
+   if d=="":
+    d=row[2]
+   try:
+    s = int(input("ENTER NEW SALARY,(LEAVE BLANK IF NOT WANT TO CHANGE ) "))
+   except:
+    s=row[3]
+   query="update employee set dept='{}',salary={} where empno={}".format(d,s,eno)
+   cur.execute(query)
+   con.commit()
+   print("## RECORD UPDATED ## ")
+ ans=input("UPDATE MORE (Y) :")
+\end{lstlisting}
+
+\textbf{OUTPUT}
+\begin{verbatim}
+########################################
+EMPLOYEE UPDATION FORM
+########################################
+
+ENTER EMPNO TO UPDATE :2
+     EMPNO                 NAME      DEPARTMENT     SALARY
+         2                NITIN              IT      90000
+
+## ARE YOUR SURE TO UPDATE ? (Y) :y
+== YOU CAN UPDATE ONLY DEPT AND SALARY ==
+== FOR EMPNO AND NAME CONTACT ADMIN ==
+ENTER NEW DEPARTMENT,(LEAVE BLANK IF NOT WANT TO CHANGE )
+ENTER NEW SALARY,(LEAVE BLANK IF NOT WANT TO CHANGE )
+## RECORD UPDATED ##
+
+UPDATE MORE (Y) :y
+ENTER EMPNO TO UPDATE :2
+     EMPNO                 NAME      DEPARTMENT     SALARY
+         2                NITIN              IT      90000
+
+## ARE YOUR SURE TO UPDATE ? (Y) :y
+== YOU CAN UPDATE ONLY DEPT AND SALARY ==
+== FOR EMPNO AND NAME CONTACT ADMIN ==
+ENTER NEW DEPARTMENT,(LEAVE BLANK IF NOT WANT TO CHANGE )SALES
+ENTER NEW SALARY,(LEAVE BLANK IF NOT WANT TO CHANGE )
+## RECORD UPDATED ##
+UPDATE MORE (Y) :Y
+ENTER EMPNO TO UPDATE :2
+     EMPNO                 NAME      DEPARTMENT     SALARY
+         2                NITIN           SALES      90000
+
+## ARE YOUR SURE TO UPDATE ? (Y) :Y
+== YOU CAN UPDATE ONLY DEPT AND SALARY ==
+== FOR EMPNO AND NAME CONTACT ADMIN ==
+ENTER NEW DEPARTMENT,(LEAVE BLANK IF NOT WANT TO CHANGE )
+ENTER NEW SALARY,(LEAVE BLANK IF NOT WANT TO CHANGE ) 91000
+## RECORD UPDATED ##
+UPDATE MORE (Y) :Y
+
+ENTER EMPNO TO UPDATE :2
+     EMPNO                 NAME      DEPARTMENT     SALARY
+         2                NITIN           SALES      91000
+
+## ARE YOUR SURE TO UPDATE ? (Y) :N
+UPDATE MORE (Y) :N
+\end{verbatim}
+
+
+
+% --------------------------------------------------
+
+\newpage
+\section*{Date : \hfill Experiment No: 20}
+
+\textbf{Program 1: Program to connect with database and delete the record of
+entered employee number.}
+
+%\begin{verbatim}
+\begin{lstlisting}[style=pythonstyle]
+import mysql.connector as mycon
+con = mycon.connect(host='127.0.0.1',user='root',password="admin",
+database="company")
+
+cur = con.cursor()
+print("#"*40)
+print("EMPLOYEE DELETION FORM")
+print("#"*40)
+print("\n\n")
+
+ans='y'
+while ans.lower()=='y':
+
+ eno = int(input("ENTER EMPNO TO DELETE :"))
+ query="select * from employee where empno={}".format(eno)
+ cur.execute(query)
+ result = cur.fetchall()
+
+ if cur.rowcount==0:
+  print("Sorry! Empno not found ")
+ else:
+  print("%10s"%"EMPNO","%20s"%"NAME", "%15s"%"DEPARTMENT",
+"%10s"%"SALARY")
+  for row in result:
+   print("%10s"%row[0],"%20s"%row[1],"%15s"%row[2],"%10s"%row[3])
+
+  choice=input("\n## ARE YOUR SURE TO DELETE ? (Y) :")
+  if choice.lower()=='y':
+   query="delete from employee where empno={}".format(eno)
+   cur.execute(query)
+   con.commit()
+   print("=== RECORD DELETED SUCCESSFULLY! ===")
+
+ ans=input("DELETE MORE ? (Y) :")
+\end{lstlisting}
+
+\textbf{OUTPUT}
+\begin{verbatim}
+########################################
+EMPLOYEE DELETION FORM
+########################################
+
+ENTER EMPNO TO DELETE :2
+ EMPNO  NAME  DEPARTMENT  SALARY
+ 2  NITIN  SALES  91000
+
+## ARE YOUR SURE TO DELETE ? (Y) :y
+=== RECORD DELETED SUCCESSFULLY! ===
+DELETE MORE ? (Y) :y
+ENTER EMPNO TO DELETE :2
+Sorry! Empno not found
+DELETE MORE ? (Y) :n
+\end{verbatim}
+
+
+
+
+
+% -------------------------------------------------
+% The same structure continues for ALL experiments
+% EXACT text, spacing, outputs, notes, and pages
+% -------------------------------------------------
+
+% \newpage
+% \begin{center}
+% \textbf{python4csip.com}
+% \end{center}
+
+\end{document}
